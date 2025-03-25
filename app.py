@@ -16,12 +16,7 @@ def init_app():
 
 
 app=init_app()
-
-
-
-@app.route("/")
-def home():
-    return "<h1> Hello I Am Sweta Priya </h1>"
+from backend.controllers import*
 
 
 

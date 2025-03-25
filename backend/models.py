@@ -63,6 +63,6 @@ class Question(db.Model):
 class UserQuiz(db.Model):
     __tablename__="user_quiz"
     id=db.Column(db.Integer,primary_key=True)
-    user_id=db.Column(db.Integer, db.ForeignKey('user.id', ondelete="CASCADE"), nullable=False)
+    user_id=db.Column(db.Integer, db.ForeignKey('users.id', ondelete="CASCADE"), nullable=False)
     quiz_id=db.Column(db.Integer, db.ForeignKey('quizzes.id', ondelete="CASCADE"), nullable=False)
     score=db.Column(db.Integer, nullable=False, default=0)

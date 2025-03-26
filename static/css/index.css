@@ -1,4 +1,4 @@
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -6,16 +6,7 @@
 }
 
 .wrapper {
-  height: 100vh;
-  background-image: linear-gradient(109.6deg,
-      rgba(112, 246, 255, 0.33) 11.2%,
-      rgba(221, 108, 241, 0.26) 42%,
-      rgba(229, 106, 253, 0.71) 71.5%,
-      rgba(123, 183, 253, 1) 100.2%);
-}
-
-.wrapper1 {
-  height: 100%;
+  min-height: 100vh;
   background-image: linear-gradient(109.6deg,
       rgba(112, 246, 255, 0.33) 11.2%,
       rgba(221, 108, 241, 0.26) 42%,
@@ -112,24 +103,4 @@
 
 .option1 {
   margin-left: 10px;
-}
-
-
-.timer {
-  font-weight: bold;
-  font-size: 1.2rem;
-  border: 2px solid #007bff;
-  padding: 5px 15px;
-  border-radius: 50%;
-  background-color: #f8f9fa;
-}
-
-.qno {
-  border: 2px solid;
-  font-weight: bold;
-  font-size: 1.2rem;
-  padding: 5px 15px;
-  border-radius: 10px;
-  background-color: #d4edda;
-  color: #155724;
 }

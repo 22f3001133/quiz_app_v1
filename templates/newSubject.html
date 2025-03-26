@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz Mater Subject</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/index.css')}}" />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+
+  <body>
+    <!--wrapper-->
+    <div class="d-flex justify-content-center align-items-center wrapper">
+      <!--main-->
+      <div class="main1 d-flex">
+        <!--form-->
+      
+        <div class=" me-5 form w-100">
+          <h1 class="text-center">{% if subject %}Edit Subject{% else %}New Subject{% endif %}</h1>
+          <form method="post" action="{{url_for('subject_form', subject_id=subject.id if subject else None)}}">
+            <div class="mb-3 mt-3">
+              <label for="email" class="form-label fw-bold"
+                ><span class="text-danger">*</span> Name</label
+              >
+              <input
+                id="name"
+                type="text"
+                class="form-control"
+                name="name"
+                placeholder="Enter subject's Name"
+                value="{{subject.name if subject else ''}}"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label for="description" class="form-label fw-bold"
+                ><span class="text-danger">*</span> Description</label
+              >
+              <input
+                id="description"
+                type="text"
+                class="form-control"
+                name="description"
+                placeholder="Enter Description"
+                value="{{subject.description if subject else ''}}"
+                required
+                
+              />
+            </div>
+            <div class="subject">
+            <button type="submit" class=" btn btn-primary w-100">{% if subject %}Update{% else %}Save{% endif %}</button>
+            <a href="/admin_dashboard" class="ms-3 btn btn-warning w-100">Cancel</a>
+            </div>
+        </form>
+        </div>
+        
+      </div>
+    </div>
+  </body>
+</html>

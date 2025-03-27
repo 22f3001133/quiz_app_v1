@@ -59,10 +59,12 @@
                   <a class="nav-link" href="/logout">Logout</a>
                 </li>
               </ul>
-              <form class="form-inline d-flex my-2 my-lg-0">
+              <form class="form-inline d-flex my-2 my-lg-0" action="{{url_for('quizzes')}}" method="GET">
                 <input
                   class="form-control mr-sm-2"
-                  type="search"
+                  type="Date search"
+                  name="query"
+                  value="{{request.args.get('query','')}}"
                   placeholder="Search"
                   aria-label="Search"
                 />

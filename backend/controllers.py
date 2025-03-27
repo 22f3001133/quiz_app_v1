@@ -1,5 +1,6 @@
 from flask import Flask, render_template,request,redirect,session,url_for,flash,jsonify
 from flask import current_app as app
+from sqlalchemy import func
 from backend.models import*
 from backend.models import db,Subject,Quiz,Question,Chapter
 from datetime import datetime
@@ -34,7 +35,11 @@ def login():
 def user_dashboard():
     if "user_id" not in session or session.get("role")!=1:
         return redirect(url_for("login"))
-    quizzes=Quiz.query.all()
+    query=request.args.get('query','').strip().lower()
+    if query:
+        quizzes=Quiz.query.filter(func.lower(Quiz.date).ilike(f"%{query}%"))
+    else:
+        quizzes=Quiz.query.all()
     return render_template("userDashboard.html", quizzes=quizzes)
     
     
@@ -64,7 +69,11 @@ def user_Register():
 def admin_dashboard():
     if "user_id" not in session or session.get("role")!=0:
         return redirect(url_for("login"))
-    subject_info=fetch_subjects()
+    query=request.args.get("query","").strip().lower()
+    if query:
+        subject_info=Subject.query.filter(func.lower(Subject.name).ilike(f"%{query}%")).all()
+    else:
+        subject_info=fetch_subjects()
     chapter_info=fetch_chapters()
     return render_template("AdminDashboard.html",subjects=subject_info,chapters=chapter_info)
 
@@ -265,7 +274,11 @@ def fetch_question(quiz_id):
 
 @app.route("/quizzes")
 def quizzes():
-    quizzes=Quiz.query.all()
+    query=request.args.get('query','').strip().lower()
+    if query:
+        quizzes=Quiz.query.filter(func.lower(Quiz.date).ilike(f"%{query}%"))
+    else:
+        quizzes=Quiz.query.all()
     return render_template('quiz.html',quizzes=quizzes)
 
 

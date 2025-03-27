@@ -53,11 +53,13 @@
               <a class="nav-link" href="/logout">Logout</a>
             </li>
           </ul>
-          <form class="form-inline d-flex my-2 my-lg-0">
+          <form class="form-inline d-flex my-2 my-lg-0" action="{{url_for('admin_dashboard')}}" method="GET">
             <input
               class="form-control mr-sm-2"
               type="search"
-              placeholder="Search"
+              name="query"
+              placeholder="Subject Search"
+              value="{{request.args.get('query','')}}"
               aria-label="Search"
             />
             <button

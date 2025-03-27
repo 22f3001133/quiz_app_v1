@@ -299,3 +299,10 @@ def submit_quiz():
     db.session.add(new_score)
     db.session.commit()
     return jsonify({'message':'Quiz Submited'})
+
+
+@app.route("/scores")
+def score():
+    user_id=session.get('user_id')
+    user_score=UserQuiz.query.filter_by(user_id=user_id).all()
+    return render_template("scores.html", scores=user_score)

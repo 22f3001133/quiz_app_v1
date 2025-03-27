@@ -317,7 +317,27 @@ def submit_quiz():
 
 
 @app.route("/scores")
-def score():
+def scores():
     user_id=session.get('user_id')
     user_score=UserQuiz.query.filter_by(user_id=user_id).all()
     return render_template("scores.html", scores=user_score)
+
+
+@app.route("/summary")
+def admin_summary():
+    user_id=session['user_id']
+    role=session.get('role')
+    
+    if role == 0:
+        quizzes=Quiz.query.all()
+        quiz_attempts={quiz.id:UserQuiz.query.filter_by(quiz_id=quiz.id).count() for quiz in quizzes}
+        quiz_top_scores={}
+        for quiz in quizzes:
+            top_score=db.session.query(db.func.max(UserQuiz.score)).filter_by(quiz_id=quiz.id).scalar() or 0
+            quiz_top_scores[quiz.id]=top_score
+        return render_template("AdminSummary.html", quiz_attempts=quiz_attempts, quiz_top_scores=quiz_top_scores)
+    elif role == 1:
+        user_scores=UserQuiz.query.filter_by(user_id=user_id).all()
+        scores_data={quiz.quiz_id:quiz.score for quiz in user_scores}
+        return render_template("UserSummary.html", scores_data=scores_data)
+        

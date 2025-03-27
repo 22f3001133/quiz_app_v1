@@ -1,4 +1,4 @@
-from flask import Flask, render_template,request,redirect,session,json,url_for,flash
+from flask import Flask, render_template,request,redirect,session,url_for,flash,jsonify
 from flask import current_app as app
 from backend.models import*
 from backend.models import db,Subject,Quiz,Question,Chapter
@@ -34,7 +34,8 @@ def login():
 def user_dashboard():
     if "user_id" not in session or session.get("role")!=1:
         return redirect(url_for("login"))
-    return render_template("userDashboard.html")
+    quizzes=Quiz.query.all()
+    return render_template("userDashboard.html", quizzes=quizzes)
     
     
 @app.route("/user_Register",methods=["GET","POST"])
@@ -266,3 +267,35 @@ def fetch_question(quiz_id):
 def quizzes():
     quizzes=Quiz.query.all()
     return render_template('quiz.html',quizzes=quizzes)
+
+
+@app.route("/quiz/<int:quiz_id>")
+def get_question(quiz_id):
+    quiz=Quiz.query.get(quiz_id)
+    
+    questions=Question.query.filter_by(quiz_id=quiz_id).all()
+    quiz_data={
+        'id':quiz.id,
+        'date':quiz.date,
+        'duration':quiz.duration,
+        'questions':[{
+            'id':q.id,
+            'text':q.question_statement,
+            'options':[q.option1, q.option2, q.option3, q.option4],
+            'correct_option':q.correct_option
+        }for q in questions]
+    }
+    return jsonify(quiz_data)
+
+
+@app.route("/submit_quiz", methods=['POST'])
+def submit_quiz():
+    data=request.json
+    quiz_id=data.get('quiz_id')
+    user_id=session.get('user_id')
+    score=data.get('score')
+    submitted_at=datetime.now()
+    new_score=UserQuiz(user_id=user_id, quiz_id=quiz_id, score=score, submitted_at=submitted_at)
+    db.session.add(new_score)
+    db.session.commit()
+    return jsonify({'message':'Quiz Submited'})

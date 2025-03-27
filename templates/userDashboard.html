@@ -1,47 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-    rel="stylesheet"
-    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
-    crossorigin="anonymous"
-  />
-  <script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz Master UserDashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-    crossorigin="anonymous"
-  ></script>
+    crossorigin="anonymous"></script>
   <link rel="stylesheet" href="../static/css/index.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
+
 <body>
   <div class="wrapper">
-    
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
       <a class="ms-5 navbar-brand" href="#">BrainBuzz</a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <div
-        class="d-flex justify-content-around navbar-collapse"
-        id="navbarSupportedContent"
-      >
+      <div class="d-flex justify-content-around navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="ms-5 me-5 nav-item active">
-            <a class="nav-link" href="#">Home</a>
+            <a class="nav-link" href="/user_dashboard">Home</a>
           </li>
           <li class="ms-5 me-5 nav-item">
             <a class="nav-link" href="/scores">Scores</a>
@@ -55,75 +43,150 @@
           </li>
         </ul>
         <form class="form-inline d-flex my-2 my-lg-0">
-          <input
-            class="form-control mr-sm-2"
-            type="search"
-            placeholder="Search"
-            aria-label="Search"
-          />
-          <button
-            class="ms-3 btn btn-outline-success my-2 my-sm-0"
-            type="submit"
-          >
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
+          <button class="ms-3 btn btn-outline-success my-2 my-sm-0" type="submit">
             Search
           </button>
         </form>
       </div>
     </nav>
-    
-    <div class="d-flex flex-wrap">
-        <section class="width1 main mt-5">
-          <h4 class="text-center">Upcoming Quizes</h4>
-          <table class="table">
-            <thead class="bg-dark">
-              <tr class="text-center">
-                <th scope="col">Sl.</th>
-                <th scope="col">No. Of Questions</th>
-                <th scope="col">Date</th>
-                <th scope="col">Duration</th>
-                <th scope="col">Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr class="text-center">
-                <th scope="row">1</th>
-                <td>10</td>
-                <td><input type="date" name="date" id="date"></td>
-                <td><input type="time" name="time" id="time"></td>
-                <td>
-                  <button type="button" class="btn btn-warning">view</button> |
-                  <button type="button" class="btn btn-danger">Start
-                </td>
-              </tr>
-              <tr class="text-center">
-                <th scope="row">2</th>
-                
-                <td>30</td>
-                <td><input type="date" name="date" id="date"></td>
-                <td><input type="time" name="time" id="time"></td>
-                <td>
-                  <button type="button" class="btn btn-warning">view</button> |
-                  <button type="button" class="btn btn-danger">Start
-                </td>
-                
-              </tr>
-              <tr class="text-center">
-                <th scope="row">3</th>
-                <td>20</td>
-                
-                <td><input type="date" name="date" id="date"></td>
-                <td><input type="time" name="time" id="time"></td>
-                <td>
-                  <button type="button" class="btn btn-warning">view</button> |
-                  <button type="button" class="btn btn-danger">Start
-                </td>
-                
-              </tr>
-            </tbody>
-          </table>
-          
-        </section>
-        
-      </div> 
+
+    <div class="quiz d-flex flex-wrap">
+      <section class="width1 main mt-5">
+        <h4 class="text-center">Upcoming Quizes</h4>
+        {% if quizzes %}
+        <table class="table">
+          <thead class="bg-dark">
+            <tr class="text-center">
+              <th scope="col">Sl.</th>
+              <th scope="col">Date</th>
+              <th scope="col">Duration</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for quiz in quizzes %}
+            <tr class="text-center">
+              <th scope="row">{{quiz.id}}</th>
+              <td>{{quiz.date}}</td>
+              <td>{{quiz.duration}}</td>
+              <td>
+                <button type="button" class="btn btn-info start-quiz" data-id="{{quiz.id}}">Start
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        {% endif %}
+      </section>
+
+    </div>
+
+    <div id="quiz-container" class="container mt-4 d-flex justify-content-center flex-column w-50 d-none">
+      <h4 id="quiz-title" class="text-center"></h4>
+      <div id="timer" class="text-center text-danger fw-bold"></div>
+      <div id="question-container"></div>
+      <div class="text-center">
+        <button id="submit-btn" class="btn btn-success mt-3 mb-5 d-none">Submit Quiz</button>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function(){
+        document.querySelectorAll(".start-quiz").forEach((button)=>{
+          button.addEventListener("click", function(){
+            const quizId=this.getAttribute("data-id")
+            startQuiz(quizId)
+            document.querySelector(".quiz").classList.add('d-none')
+
+          })
+        })
+      })
+      let activeQuiz=null
+      let timeInterval;
+      let timeRemaining;
+      let userAnswers={};
+      let userId="{{session['user_id']}}"
+
+      function startQuiz(quizId){
+        fetch(`/quiz/${quizId}`)
+        .then(response=>response.json())
+        .then(data=>{
+          activeQuiz = data;
+          timeRemaining = data.duration*60
+          userAnswers={}
+          document.querySelector("#quiz-title").textContent=`Quiz ${data.id}`
+          displayQuestions(data.questions);
+          startTimer()
+          document.querySelector("#quiz-container").classList.remove("d-none");
+        })
+      }
+
+      function displayQuestions(questions){
+        const container = document.querySelector("#question-container")
+        container.innerHTML=""
+        questions.forEach((question,index)=>{
+          const questionHtml=`
+            <div class="question-card mt-3 border border-secondary p-3 rounded">
+              <p><strong>Q${index+1}: ${question.text}</strong></p>
+              ${question.options.map(option=>`
+                <label>
+                  <input type="radio" name="q${question.id}" value="${option}" onchange="saveAnswer(${question.id}, '${option}')">
+                  ${option}
+                </label><br>
+              `).join("")}
+          `;
+
+          container.innerHTML+=questionHtml
+        })
+        document.querySelector("#submit-btn").classList.remove("d-none");
+        document.querySelector("#submit-btn").onclick=submitQuiz;
+      }
+
+      function saveAnswer(questionId, answer){
+        userAnswers[questionId]=answer
+      }
+
+      function startTimer(){
+        const timer=document.querySelector("#timer")
+        clearInterval(timeInterval)
+
+        timeInterval=setInterval(()=>{
+          let minutes=Math.floor(timeRemaining/60)
+          let seconds=timeRemaining%60
+          timer.textContent=`Time Left: ${minutes}:${seconds<10 ? "0":""}${seconds}`
+
+          if(timeRemaining<=0){
+            clearInterval(timeInterval);
+            submitQuiz();
+          }
+          timeRemaining--;
+        },1000);
+      }
+
+      function submitQuiz(){
+        clearInterval(timeInterval);
+        let score=0;
+        activeQuiz.questions.forEach((q)=>{
+          if(userAnswers[q.id]===q.correct_option){
+            score++
+          }
+        })
+
+        fetch(`/submit_quiz`,{
+          method:'POST',
+          headers:{'content-Type':'application/json'},
+          body:JSON.stringify({
+            quiz_id:activeQuiz.id,
+            user_id:userId,
+            score:score
+          })
+        }).then(()=>{
+          alert(`Quiz Submitted! Your score : ${score}/${activeQuiz.questions.length}`)
+          document.querySelector("#quiz-container").classList.add("d-none");
+          document.querySelector(".quiz").classList.remove("d-none");
+        })
+      }
+    </script>
 </body>
 </html>

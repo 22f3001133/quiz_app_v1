@@ -66,3 +66,4 @@ class UserQuiz(db.Model):
     user_id=db.Column(db.Integer, db.ForeignKey('users.id', ondelete="CASCADE"), nullable=False)
     quiz_id=db.Column(db.Integer, db.ForeignKey('quizzes.id', ondelete="CASCADE"), nullable=False)
     score=db.Column(db.Integer, nullable=False, default=0)
+    submitted_at=db.Column(db.Date, nullable=False)

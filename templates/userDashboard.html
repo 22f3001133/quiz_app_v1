@@ -71,7 +71,11 @@
               <td>{{quiz.date}}</td>
               <td>{{quiz.duration}}</td>
               <td>
-                <button type="button" class="btn btn-info start-quiz" data-id="{{quiz.id}}">Start
+                {% if quiz.date.strftime('%Y-%m-%d') == current_date %}
+                  <button type="button" class="btn btn-info start-quiz" data-id="{{quiz.id}}">Start</button>
+                {% else %}
+                    <button type="button" class="btn btn-info start-quiz" disabled data-id="{{quiz.id}}">Start</button>
+                {% endif %}
               </td>
             </tr>
             {% endfor %}

@@ -3,7 +3,7 @@ from flask import current_app as app
 from sqlalchemy import func
 from backend.models import*
 from backend.models import db,Subject,Quiz,Question,Chapter
-from datetime import datetime
+from datetime import datetime, date
 
 @app.route('/',methods=["GET"])
 def home():
@@ -36,11 +36,13 @@ def user_dashboard():
     if "user_id" not in session or session.get("role")!=1:
         return redirect(url_for("login"))
     query=request.args.get('query','').strip().lower()
+    current_date=date.today().strftime("%Y-%m-%d")
+    print(current_date)
     if query:
         quizzes=Quiz.query.filter(func.lower(Quiz.date).ilike(f"%{query}%"))
     else:
         quizzes=Quiz.query.all()
-    return render_template("userDashboard.html", quizzes=quizzes)
+    return render_template("userDashboard.html", quizzes=quizzes, current_date=current_date)
     
     
 @app.route("/user_Register",methods=["GET","POST"])
